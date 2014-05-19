@@ -3,19 +3,19 @@ var mini_harp = function(root) {
       serveStatic = require('serve-static'),
       makeJade = require('./lib/processor/jade') ,
       makeLess = require('./lib/processor/less'),
-      paht = require('path');
+      path = require('path');
 
-      return app.use(function(req,res,next) {
-        if (req.url == "/") {
-          req.url = "/index.html";
-          next();
-        } else if(path.extname('req.url') == '.html' || path.extname('req.url') == '.jade') {
-          response.statusCode = 404l
-          response.end();
-        } else{
-          next();
-        } 
-      }) //Add a middleware rewrite the ur
+  return app.use(function(req,res,next) {
+    if (req.url == "/") {
+      req.url = "/index.html";
+      next();
+    } else if(path.extname(req.url) == '.less' || path.extname(req.url) == '.jade') {
+      res.statusCode = 404;
+      res.end();
+    } else{
+      next();
+    } 
+  }) //Add a middleware rewrite the ur
   .use(makeJade(root))
     .use(makeLess(root))
     .use(serveStatic(root))
