@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-var mini_harp = require("."),
+var mini_harp = require(".."),
     parseArgs = require("minimist");
 
 var pars = parseArgs(process.argv); // Input parameters
